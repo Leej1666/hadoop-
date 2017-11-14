@@ -1,152 +1,152 @@
-hadoop2.0ÒÑ¾­·¢²¼ÁËÎÈ¶¨°æ±¾ÁË£¬Ôö¼ÓÁËºÜ¶àÌØĞÔ£¬±ÈÈçHDFS HA¡¢YARNµÈ¡£×îĞÂµÄhadoop-2.4.1ÓÖÔö¼ÓÁËYARN HA
+hadoop2.0å·²ç»å‘å¸ƒäº†ç¨³å®šç‰ˆæœ¬äº†ï¼Œå¢åŠ äº†å¾ˆå¤šç‰¹æ€§ï¼Œæ¯”å¦‚HDFS HAã€YARNç­‰ã€‚æœ€æ–°çš„hadoop-2.4.1åˆå¢åŠ äº†YARN HA
 
-×¢Òâ£ºapacheÌá¹©µÄhadoop-2.4.1µÄ°²×°°üÊÇÔÚ32Î»²Ù×÷ÏµÍ³±àÒëµÄ£¬ÒòÎªhadoopÒÀÀµÒ»Ğ©C++µÄ±¾µØ¿â£¬
-ËùÒÔÈç¹ûÔÚ64Î»µÄ²Ù×÷ÉÏ°²×°hadoop-2.4.1¾ÍĞèÒªÖØĞÂÔÚ64²Ù×÷ÏµÍ³ÉÏÖØĞÂ±àÒë
-£¨½¨ÒéµÚÒ»´Î°²×°ÓÃ32Î»µÄÏµÍ³£¬ÎÒ½«±àÒëºÃµÄ64Î»µÄÒ²ÉÏ´«µ½Èº¹²ÏíÀïÁË£¬Èç¹ûÓĞĞËÈ¤µÄ¿ÉÒÔ×Ô¼º±àÒëÒ»ÏÂ£©
+æ³¨æ„ï¼šapacheæä¾›çš„hadoop-2.4.1çš„å®‰è£…åŒ…æ˜¯åœ¨32ä½æ“ä½œç³»ç»Ÿç¼–è¯‘çš„ï¼Œå› ä¸ºhadoopä¾èµ–ä¸€äº›C++çš„æœ¬åœ°åº“ï¼Œ
+æ‰€ä»¥å¦‚æœåœ¨64ä½çš„æ“ä½œä¸Šå®‰è£…hadoop-2.4.1å°±éœ€è¦é‡æ–°åœ¨64æ“ä½œç³»ç»Ÿä¸Šé‡æ–°ç¼–è¯‘
+ï¼ˆå»ºè®®ç¬¬ä¸€æ¬¡å®‰è£…ç”¨32ä½çš„ç³»ç»Ÿï¼Œæˆ‘å°†ç¼–è¯‘å¥½çš„64ä½çš„ä¹Ÿä¸Šä¼ åˆ°ç¾¤å…±äº«é‡Œäº†ï¼Œå¦‚æœæœ‰å…´è¶£çš„å¯ä»¥è‡ªå·±ç¼–è¯‘ä¸€ä¸‹ï¼‰
 
-Ç°ÆÚ×¼±¸¾Í²»ÏêÏ¸ËµÁË£¬¿ÎÌÃÉÏ¶¼½éÉÜÁË
-1.ĞŞ¸ÄLinuxÖ÷»úÃû
-2.ĞŞ¸ÄIP
-3.ĞŞ¸ÄÖ÷»úÃûºÍIPµÄÓ³Éä¹ØÏµ
-	######×¢Òâ######Èç¹ûÄãÃÇ¹«Ë¾ÊÇ×âÓÃµÄ·şÎñÆ÷»òÊÇÊ¹ÓÃµÄÔÆÖ÷»ú£¨Èç»ªÎªÓÃÖ÷»ú¡¢°¢ÀïÔÆÖ÷»úµÈ£©
-	/etc/hostsÀïÃæÒªÅäÖÃµÄÊÇÄÚÍøIPµØÖ·ºÍÖ÷»úÃûµÄÓ³Éä¹ØÏµ	
-4.¹Ø±Õ·À»ğÇ½
-5.sshÃâµÇÂ½ 
-6.°²×°JDK£¬ÅäÖÃ»·¾³±äÁ¿µÈ
+å‰æœŸå‡†å¤‡å°±ä¸è¯¦ç»†è¯´äº†ï¼Œè¯¾å ‚ä¸Šéƒ½ä»‹ç»äº†
+1.ä¿®æ”¹Linuxä¸»æœºå
+2.ä¿®æ”¹IP
+3.ä¿®æ”¹ä¸»æœºåå’ŒIPçš„æ˜ å°„å…³ç³»
+	######æ³¨æ„######å¦‚æœä½ ä»¬å…¬å¸æ˜¯ç§Ÿç”¨çš„æœåŠ¡å™¨æˆ–æ˜¯ä½¿ç”¨çš„äº‘ä¸»æœºï¼ˆå¦‚åä¸ºç”¨ä¸»æœºã€é˜¿é‡Œäº‘ä¸»æœºç­‰ï¼‰
+	/etc/hostsé‡Œé¢è¦é…ç½®çš„æ˜¯å†…ç½‘IPåœ°å€å’Œä¸»æœºåçš„æ˜ å°„å…³ç³»	
+4.å…³é—­é˜²ç«å¢™
+5.sshå…ç™»é™† 
+6.å®‰è£…JDKï¼Œé…ç½®ç¯å¢ƒå˜é‡ç­‰
 
-¼¯Èº¹æ»®£º
-	Ö÷»úÃû		IP				°²×°µÄÈí¼ş					ÔËĞĞµÄ½ø³Ì
-	itcast01	192.168.1.201	jdk¡¢hadoop					NameNode¡¢DFSZKFailoverController(zkfc)
-	itcast02	192.168.1.202	jdk¡¢hadoop					NameNode¡¢DFSZKFailoverController(zkfc)
-	itcast03	192.168.1.203	jdk¡¢hadoop					ResourceManager
-	itcast04	192.168.1.204	jdk¡¢hadoop					ResourceManager
-	itcast05	192.168.1.205	jdk¡¢hadoop¡¢zookeeper		DataNode¡¢NodeManager¡¢JournalNode¡¢QuorumPeerMain
-	itcast06	192.168.1.206	jdk¡¢hadoop¡¢zookeeper		DataNode¡¢NodeManager¡¢JournalNode¡¢QuorumPeerMain
-	itcast07	192.168.1.207	jdk¡¢hadoop¡¢zookeeper		DataNode¡¢NodeManager¡¢JournalNode¡¢QuorumPeerMain
+é›†ç¾¤è§„åˆ’ï¼š
+	ä¸»æœºå		IP				å®‰è£…çš„è½¯ä»¶					è¿è¡Œçš„è¿›ç¨‹
+	itcast01	192.168.1.201	jdkã€hadoop					NameNodeã€DFSZKFailoverController(zkfc)
+	itcast02	192.168.1.202	jdkã€hadoop					NameNodeã€DFSZKFailoverController(zkfc)
+	itcast03	192.168.1.203	jdkã€hadoop					ResourceManager
+	itcast04	192.168.1.204	jdkã€hadoop					ResourceManager
+	itcast05	192.168.1.205	jdkã€hadoopã€zookeeper		DataNodeã€NodeManagerã€JournalNodeã€QuorumPeerMain
+	itcast06	192.168.1.206	jdkã€hadoopã€zookeeper		DataNodeã€NodeManagerã€JournalNodeã€QuorumPeerMain
+	itcast07	192.168.1.207	jdkã€hadoopã€zookeeper		DataNodeã€NodeManagerã€JournalNodeã€QuorumPeerMain
 	
-ËµÃ÷£º
-	1.ÔÚhadoop2.0ÖĞÍ¨³£ÓÉÁ½¸öNameNode×é³É£¬Ò»¸ö´¦ÓÚactive×´Ì¬£¬ÁíÒ»¸ö´¦ÓÚstandby×´Ì¬¡£Active NameNode¶ÔÍâÌá¹©·şÎñ£¬¶øStandby NameNodeÔò²»¶ÔÍâÌá¹©·şÎñ£¬½öÍ¬²½active namenodeµÄ×´Ì¬£¬ÒÔ±ãÄÜ¹»ÔÚËüÊ§°ÜÊ±¿ìËÙ½øĞĞÇĞ»»¡£
-	hadoop2.0¹Ù·½Ìá¹©ÁËÁ½ÖÖHDFS HAµÄ½â¾ö·½°¸£¬Ò»ÖÖÊÇNFS£¬ÁíÒ»ÖÖÊÇQJM¡£ÕâÀïÎÒÃÇÊ¹ÓÃ¼òµ¥µÄQJM¡£ÔÚ¸Ã·½°¸ÖĞ£¬Ö÷±¸NameNodeÖ®¼äÍ¨¹ıÒ»×éJournalNodeÍ¬²½ÔªÊı¾İĞÅÏ¢£¬Ò»ÌõÊı¾İÖ»Òª³É¹¦Ğ´Èë¶àÊıJournalNode¼´ÈÏÎªĞ´Èë³É¹¦¡£Í¨³£ÅäÖÃÆæÊı¸öJournalNode
-	ÕâÀï»¹ÅäÖÃÁËÒ»¸özookeeper¼¯Èº£¬ÓÃÓÚZKFC£¨DFSZKFailoverController£©¹ÊÕÏ×ªÒÆ£¬µ±Active NameNode¹ÒµôÁË£¬»á×Ô¶¯ÇĞ»»Standby NameNodeÎªstandby×´Ì¬
-	2.hadoop-2.2.0ÖĞÒÀÈ»´æÔÚÒ»¸öÎÊÌâ£¬¾ÍÊÇResourceManagerÖ»ÓĞÒ»¸ö£¬´æÔÚµ¥µã¹ÊÕÏ£¬hadoop-2.4.1½â¾öÁËÕâ¸öÎÊÌâ£¬ÓĞÁ½¸öResourceManager£¬Ò»¸öÊÇActive£¬Ò»¸öÊÇStandby£¬×´Ì¬ÓÉzookeeper½øĞĞĞ­µ÷
-°²×°²½Öè£º
-	1.°²×°ÅäÖÃzooekeeper¼¯Èº£¨ÔÚitcast05ÉÏ£©
-		1.1½âÑ¹
+è¯´æ˜ï¼š
+	1.åœ¨hadoop2.0ä¸­é€šå¸¸ç”±ä¸¤ä¸ªNameNodeç»„æˆï¼Œä¸€ä¸ªå¤„äºactiveçŠ¶æ€ï¼Œå¦ä¸€ä¸ªå¤„äºstandbyçŠ¶æ€ã€‚Active NameNodeå¯¹å¤–æä¾›æœåŠ¡ï¼Œè€ŒStandby NameNodeåˆ™ä¸å¯¹å¤–æä¾›æœåŠ¡ï¼Œä»…åŒæ­¥active namenodeçš„çŠ¶æ€ï¼Œä»¥ä¾¿èƒ½å¤Ÿåœ¨å®ƒå¤±è´¥æ—¶å¿«é€Ÿè¿›è¡Œåˆ‡æ¢ã€‚
+	hadoop2.0å®˜æ–¹æä¾›äº†ä¸¤ç§HDFS HAçš„è§£å†³æ–¹æ¡ˆï¼Œä¸€ç§æ˜¯NFSï¼Œå¦ä¸€ç§æ˜¯QJMã€‚è¿™é‡Œæˆ‘ä»¬ä½¿ç”¨ç®€å•çš„QJMã€‚åœ¨è¯¥æ–¹æ¡ˆä¸­ï¼Œä¸»å¤‡NameNodeä¹‹é—´é€šè¿‡ä¸€ç»„JournalNodeåŒæ­¥å…ƒæ•°æ®ä¿¡æ¯ï¼Œä¸€æ¡æ•°æ®åªè¦æˆåŠŸå†™å…¥å¤šæ•°JournalNodeå³è®¤ä¸ºå†™å…¥æˆåŠŸã€‚é€šå¸¸é…ç½®å¥‡æ•°ä¸ªJournalNode
+	è¿™é‡Œè¿˜é…ç½®äº†ä¸€ä¸ªzookeeperé›†ç¾¤ï¼Œç”¨äºZKFCï¼ˆDFSZKFailoverControllerï¼‰æ•…éšœè½¬ç§»ï¼Œå½“Active NameNodeæŒ‚æ‰äº†ï¼Œä¼šè‡ªåŠ¨åˆ‡æ¢Standby NameNodeä¸ºstandbyçŠ¶æ€
+	2.hadoop-2.2.0ä¸­ä¾ç„¶å­˜åœ¨ä¸€ä¸ªé—®é¢˜ï¼Œå°±æ˜¯ResourceManageråªæœ‰ä¸€ä¸ªï¼Œå­˜åœ¨å•ç‚¹æ•…éšœï¼Œhadoop-2.4.1è§£å†³äº†è¿™ä¸ªé—®é¢˜ï¼Œæœ‰ä¸¤ä¸ªResourceManagerï¼Œä¸€ä¸ªæ˜¯Activeï¼Œä¸€ä¸ªæ˜¯Standbyï¼ŒçŠ¶æ€ç”±zookeeperè¿›è¡Œåè°ƒ
+å®‰è£…æ­¥éª¤ï¼š
+	1.å®‰è£…é…ç½®zooekeeperé›†ç¾¤ï¼ˆåœ¨itcast05ä¸Šï¼‰
+		1.1è§£å‹
 			tar -zxvf zookeeper-3.4.5.tar.gz -C /itcast/
-		1.2ĞŞ¸ÄÅäÖÃ
+		1.2ä¿®æ”¹é…ç½®
 			cd /itcast/zookeeper-3.4.5/conf/
 			cp zoo_sample.cfg zoo.cfg
 			vim zoo.cfg
-			ĞŞ¸Ä£ºdataDir=/itcast/zookeeper-3.4.5/tmp
-			ÔÚ×îºóÌí¼Ó£º
+			ä¿®æ”¹ï¼šdataDir=/itcast/zookeeper-3.4.5/tmp
+			åœ¨æœ€åæ·»åŠ ï¼š
 			server.1=itcast05:2888:3888
 			server.2=itcast06:2888:3888
 			server.3=itcast07:2888:3888
-			±£´æÍË³ö
-			È»ºó´´½¨Ò»¸ötmpÎÄ¼ş¼Ğ
+			ä¿å­˜é€€å‡º
+			ç„¶ååˆ›å»ºä¸€ä¸ªtmpæ–‡ä»¶å¤¹
 			mkdir /itcast/zookeeper-3.4.5/tmp
-			ÔÙ´´½¨Ò»¸ö¿ÕÎÄ¼ş
+			å†åˆ›å»ºä¸€ä¸ªç©ºæ–‡ä»¶
 			touch /itcast/zookeeper-3.4.5/tmp/myid
-			×îºóÏò¸ÃÎÄ¼şĞ´ÈëID
+			æœ€åå‘è¯¥æ–‡ä»¶å†™å…¥ID
 			echo 1 > /itcast/zookeeper-3.4.5/tmp/myid
-		1.3½«ÅäÖÃºÃµÄzookeeper¿½±´µ½ÆäËû½Úµã(Ê×ÏÈ·Ö±ğÔÚitcast06¡¢itcast07¸ùÄ¿Â¼ÏÂ´´½¨Ò»¸öitcastÄ¿Â¼£ºmkdir /itcast)
+		1.3å°†é…ç½®å¥½çš„zookeeperæ‹·è´åˆ°å…¶ä»–èŠ‚ç‚¹(é¦–å…ˆåˆ†åˆ«åœ¨itcast06ã€itcast07æ ¹ç›®å½•ä¸‹åˆ›å»ºä¸€ä¸ªitcastç›®å½•ï¼šmkdir /itcast)
 			scp -r /itcast/zookeeper-3.4.5/ itcast06:/itcast/
 			scp -r /itcast/zookeeper-3.4.5/ itcast07:/itcast/
 			
-			×¢Òâ£ºĞŞ¸Äitcast06¡¢itcast07¶ÔÓ¦/itcast/zookeeper-3.4.5/tmp/myidÄÚÈİ
-			itcast06£º
+			æ³¨æ„ï¼šä¿®æ”¹itcast06ã€itcast07å¯¹åº”/itcast/zookeeper-3.4.5/tmp/myidå†…å®¹
+			itcast06ï¼š
 				echo 2 > /itcast/zookeeper-3.4.5/tmp/myid
-			itcast07£º
+			itcast07ï¼š
 				echo 3 > /itcast/zookeeper-3.4.5/tmp/myid
 	
-	2.°²×°ÅäÖÃhadoop¼¯Èº£¨ÔÚitcast01ÉÏ²Ù×÷£©
-		2.1½âÑ¹
+	2.å®‰è£…é…ç½®hadoopé›†ç¾¤ï¼ˆåœ¨itcast01ä¸Šæ“ä½œï¼‰
+		2.1è§£å‹
 			tar -zxvf hadoop-2.4.1.tar.gz -C /itcast/
-		2.2ÅäÖÃHDFS£¨hadoop2.0ËùÓĞµÄÅäÖÃÎÄ¼ş¶¼ÔÚ$HADOOP_HOME/etc/hadoopÄ¿Â¼ÏÂ£©
-			#½«hadoopÌí¼Óµ½»·¾³±äÁ¿ÖĞ
+		2.2é…ç½®HDFSï¼ˆhadoop2.0æ‰€æœ‰çš„é…ç½®æ–‡ä»¶éƒ½åœ¨$HADOOP_HOME/etc/hadoopç›®å½•ä¸‹ï¼‰
+			#å°†hadoopæ·»åŠ åˆ°ç¯å¢ƒå˜é‡ä¸­
 			vim /etc/profile
 			export JAVA_HOME=/usr/java/jdk1.7.0_55
 			export HADOOP_HOME=/itcast/hadoop-2.4.1
 			export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin
 			
-			#hadoop2.0µÄÅäÖÃÎÄ¼şÈ«²¿ÔÚ$HADOOP_HOME/etc/hadoopÏÂ
+			#hadoop2.0çš„é…ç½®æ–‡ä»¶å…¨éƒ¨åœ¨$HADOOP_HOME/etc/hadoopä¸‹
 			cd /itcast/hadoop-2.4.1/etc/hadoop
 			
-			2.2.1ĞŞ¸Ähadoo-env.sh
+			2.2.1ä¿®æ”¹hadoo-env.sh
 				export JAVA_HOME=/usr/java/jdk1.7.0_55
 				
-			2.2.2ĞŞ¸Äcore-site.xml
+			2.2.2ä¿®æ”¹core-site.xml
 				<configuration>
-					<!-- Ö¸¶¨hdfsµÄnameserviceÎªns1 -->
+					<!-- æŒ‡å®šhdfsçš„nameserviceä¸ºns1 -->
 					<property>
 						<name>fs.defaultFS</name>
 						<value>hdfs://ns1</value>
 					</property>
-					<!-- Ö¸¶¨hadoopÁÙÊ±Ä¿Â¼ -->
+					<!-- æŒ‡å®šhadoopä¸´æ—¶ç›®å½• -->
 					<property>
 						<name>hadoop.tmp.dir</name>
 						<value>/itcast/hadoop-2.4.1/tmp</value>
 					</property>
-					<!-- Ö¸¶¨zookeeperµØÖ· -->
+					<!-- æŒ‡å®šzookeeperåœ°å€ -->
 					<property>
 						<name>ha.zookeeper.quorum</name>
 						<value>itcast05:2181,itcast06:2181,itcast07:2181</value>
 					</property>
 				</configuration>
 				
-			2.2.3ĞŞ¸Ähdfs-site.xml
+			2.2.3ä¿®æ”¹hdfs-site.xml
 				<configuration>
-					<!--Ö¸¶¨hdfsµÄnameserviceÎªns1£¬ĞèÒªºÍcore-site.xmlÖĞµÄ±£³ÖÒ»ÖÂ -->
+					<!--æŒ‡å®šhdfsçš„nameserviceä¸ºns1ï¼Œéœ€è¦å’Œcore-site.xmlä¸­çš„ä¿æŒä¸€è‡´ -->
 					<property>
 						<name>dfs.nameservices</name>
 						<value>ns1</value>
 					</property>
-					<!-- ns1ÏÂÃæÓĞÁ½¸öNameNode£¬·Ö±ğÊÇnn1£¬nn2 -->
+					<!-- ns1ä¸‹é¢æœ‰ä¸¤ä¸ªNameNodeï¼Œåˆ†åˆ«æ˜¯nn1ï¼Œnn2 -->
 					<property>
 						<name>dfs.ha.namenodes.ns1</name>
 						<value>nn1,nn2</value>
 					</property>
-					<!-- nn1µÄRPCÍ¨ĞÅµØÖ· -->
+					<!-- nn1çš„RPCé€šä¿¡åœ°å€ -->
 					<property>
 						<name>dfs.namenode.rpc-address.ns1.nn1</name>
 						<value>itcast01:9000</value>
 					</property>
-					<!-- nn1µÄhttpÍ¨ĞÅµØÖ· -->
+					<!-- nn1çš„httpé€šä¿¡åœ°å€ -->
 					<property>
 						<name>dfs.namenode.http-address.ns1.nn1</name>
 						<value>itcast01:50070</value>
 					</property>
-					<!-- nn2µÄRPCÍ¨ĞÅµØÖ· -->
+					<!-- nn2çš„RPCé€šä¿¡åœ°å€ -->
 					<property>
 						<name>dfs.namenode.rpc-address.ns1.nn2</name>
 						<value>itcast02:9000</value>
 					</property>
-					<!-- nn2µÄhttpÍ¨ĞÅµØÖ· -->
+					<!-- nn2çš„httpé€šä¿¡åœ°å€ -->
 					<property>
 						<name>dfs.namenode.http-address.ns1.nn2</name>
 						<value>itcast02:50070</value>
 					</property>
-					<!-- Ö¸¶¨NameNodeµÄÔªÊı¾İÔÚJournalNodeÉÏµÄ´æ·ÅÎ»ÖÃ -->
+					<!-- æŒ‡å®šNameNodeçš„å…ƒæ•°æ®åœ¨JournalNodeä¸Šçš„å­˜æ”¾ä½ç½® -->
 					<property>
 						<name>dfs.namenode.shared.edits.dir</name>
 						<value>qjournal://itcast05:8485;itcast06:8485;itcast07:8485/ns1</value>
 					</property>
-					<!-- Ö¸¶¨JournalNodeÔÚ±¾µØ´ÅÅÌ´æ·ÅÊı¾İµÄÎ»ÖÃ -->
+					<!-- æŒ‡å®šJournalNodeåœ¨æœ¬åœ°ç£ç›˜å­˜æ”¾æ•°æ®çš„ä½ç½® -->
 					<property>
 						<name>dfs.journalnode.edits.dir</name>
 						<value>/itcast/hadoop-2.4.1/journal</value>
 					</property>
-					<!-- ¿ªÆôNameNodeÊ§°Ü×Ô¶¯ÇĞ»» -->
+					<!-- å¼€å¯NameNodeå¤±è´¥è‡ªåŠ¨åˆ‡æ¢ -->
 					<property>
 						<name>dfs.ha.automatic-failover.enabled</name>
 						<value>true</value>
 					</property>
-					<!-- ÅäÖÃÊ§°Ü×Ô¶¯ÇĞ»»ÊµÏÖ·½Ê½ -->
+					<!-- é…ç½®å¤±è´¥è‡ªåŠ¨åˆ‡æ¢å®ç°æ–¹å¼ -->
 					<property>
 						<name>dfs.client.failover.proxy.provider.ns1</name>
 						<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
 					</property>
-					<!-- ÅäÖÃ¸ôÀë»úÖÆ·½·¨£¬¶à¸ö»úÖÆÓÃ»»ĞĞ·Ö¸î£¬¼´Ã¿¸ö»úÖÆÔİÓÃÒ»ĞĞ-->
+					<!-- é…ç½®éš”ç¦»æœºåˆ¶æ–¹æ³•ï¼Œå¤šä¸ªæœºåˆ¶ç”¨æ¢è¡Œåˆ†å‰²ï¼Œå³æ¯ä¸ªæœºåˆ¶æš‚ç”¨ä¸€è¡Œ-->
 					<property>
 						<name>dfs.ha.fencing.methods</name>
 						<value>
@@ -154,45 +154,45 @@ hadoop2.0ÒÑ¾­·¢²¼ÁËÎÈ¶¨°æ±¾ÁË£¬Ôö¼ÓÁËºÜ¶àÌØĞÔ£¬±ÈÈçHDFS HA¡¢YARNµÈ¡£×îĞÂµÄhadoop
 							shell(/bin/true)
 						</value>
 					</property>
-					<!-- Ê¹ÓÃsshfence¸ôÀë»úÖÆÊ±ĞèÒªsshÃâµÇÂ½ -->
+					<!-- ä½¿ç”¨sshfenceéš”ç¦»æœºåˆ¶æ—¶éœ€è¦sshå…ç™»é™† -->
 					<property>
 						<name>dfs.ha.fencing.ssh.private-key-files</name>
 						<value>/home/hadoop/.ssh/id_rsa</value>
 					</property>
-					<!-- ÅäÖÃsshfence¸ôÀë»úÖÆ³¬Ê±Ê±¼ä -->
+					<!-- é…ç½®sshfenceéš”ç¦»æœºåˆ¶è¶…æ—¶æ—¶é—´ -->
 					<property>
 						<name>dfs.ha.fencing.ssh.connect-timeout</name>
 						<value>30000</value>
 					</property>
 				</configuration>
 			
-			2.2.4ĞŞ¸Ämapred-site.xml
+			2.2.4ä¿®æ”¹mapred-site.xml
 				<configuration>
-					<!-- Ö¸¶¨mr¿ò¼ÜÎªyarn·½Ê½ -->
+					<!-- æŒ‡å®šmræ¡†æ¶ä¸ºyarnæ–¹å¼ -->
 					<property>
 						<name>mapreduce.framework.name</name>
 						<value>yarn</value>
 					</property>
 				</configuration>	
 			
-			2.2.5ĞŞ¸Äyarn-site.xml
+			2.2.5ä¿®æ”¹yarn-site.xml
 				<configuration>
-						<!-- ¿ªÆôRM¸ß¿É¿¿ -->
+						<!-- å¼€å¯RMé«˜å¯é  -->
 						<property>
 						   <name>yarn.resourcemanager.ha.enabled</name>
 						   <value>true</value>
 						</property>
-						<!-- Ö¸¶¨RMµÄcluster id -->
+						<!-- æŒ‡å®šRMçš„cluster id -->
 						<property>
 						   <name>yarn.resourcemanager.cluster-id</name>
 						   <value>yrc</value>
 						</property>
-						<!-- Ö¸¶¨RMµÄÃû×Ö -->
+						<!-- æŒ‡å®šRMçš„åå­— -->
 						<property>
 						   <name>yarn.resourcemanager.ha.rm-ids</name>
 						   <value>rm1,rm2</value>
 						</property>
-						<!-- ·Ö±ğÖ¸¶¨RMµÄµØÖ· -->
+						<!-- åˆ†åˆ«æŒ‡å®šRMçš„åœ°å€ -->
 						<property>
 						   <name>yarn.resourcemanager.hostname.rm1</name>
 						   <value>itcast03</value>
@@ -201,7 +201,7 @@ hadoop2.0ÒÑ¾­·¢²¼ÁËÎÈ¶¨°æ±¾ÁË£¬Ôö¼ÓÁËºÜ¶àÌØĞÔ£¬±ÈÈçHDFS HA¡¢YARNµÈ¡£×îĞÂµÄhadoop
 						   <name>yarn.resourcemanager.hostname.rm2</name>
 						   <value>itcast04</value>
 						</property>
-						<!-- Ö¸¶¨zk¼¯ÈºµØÖ· -->
+						<!-- æŒ‡å®šzké›†ç¾¤åœ°å€ -->
 						<property>
 						   <name>yarn.resourcemanager.zk-address</name>
 						   <value>itcast05:2181,itcast06:2181,itcast07:2181</value>
@@ -213,16 +213,16 @@ hadoop2.0ÒÑ¾­·¢²¼ÁËÎÈ¶¨°æ±¾ÁË£¬Ôö¼ÓÁËºÜ¶àÌØĞÔ£¬±ÈÈçHDFS HA¡¢YARNµÈ¡£×îĞÂµÄhadoop
 				</configuration>
 			
 				
-			2.2.6ĞŞ¸Äslaves(slavesÊÇÖ¸¶¨×Ó½ÚµãµÄÎ»ÖÃ£¬ÒòÎªÒªÔÚitcast01ÉÏÆô¶¯HDFS¡¢ÔÚitcast03Æô¶¯yarn£¬ËùÒÔitcast01ÉÏµÄslavesÎÄ¼şÖ¸¶¨µÄÊÇdatanodeµÄÎ»ÖÃ£¬itcast03ÉÏµÄslavesÎÄ¼şÖ¸¶¨µÄÊÇnodemanagerµÄÎ»ÖÃ)
+			2.2.6ä¿®æ”¹slaves(slavesæ˜¯æŒ‡å®šå­èŠ‚ç‚¹çš„ä½ç½®ï¼Œå› ä¸ºè¦åœ¨itcast01ä¸Šå¯åŠ¨HDFSã€åœ¨itcast03å¯åŠ¨yarnï¼Œæ‰€ä»¥itcast01ä¸Šçš„slavesæ–‡ä»¶æŒ‡å®šçš„æ˜¯datanodeçš„ä½ç½®ï¼Œitcast03ä¸Šçš„slavesæ–‡ä»¶æŒ‡å®šçš„æ˜¯nodemanagerçš„ä½ç½®)
 				itcast05
 				itcast06
 				itcast07
 
-			2.2.7ÅäÖÃÃâÃÜÂëµÇÂ½
-				#Ê×ÏÈÒªÅäÖÃitcast01µ½itcast02¡¢itcast03¡¢itcast04¡¢itcast05¡¢itcast06¡¢itcast07µÄÃâÃÜÂëµÇÂ½
-				#ÔÚitcast01ÉÏÉú²úÒ»¶ÔÔ¿³×
+			2.2.7é…ç½®å…å¯†ç ç™»é™†
+				#é¦–å…ˆè¦é…ç½®itcast01åˆ°itcast02ã€itcast03ã€itcast04ã€itcast05ã€itcast06ã€itcast07çš„å…å¯†ç ç™»é™†
+				#åœ¨itcast01ä¸Šç”Ÿäº§ä¸€å¯¹é’¥åŒ™
 				ssh-keygen -t rsa
-				#½«¹«Ô¿¿½±´µ½ÆäËû½Úµã£¬°üÀ¨×Ô¼º
+				#å°†å…¬é’¥æ‹·è´åˆ°å…¶ä»–èŠ‚ç‚¹ï¼ŒåŒ…æ‹¬è‡ªå·±
 				ssh-coyp-id itcast01
 				ssh-coyp-id itcast02
 				ssh-coyp-id itcast03
@@ -230,91 +230,83 @@ hadoop2.0ÒÑ¾­·¢²¼ÁËÎÈ¶¨°æ±¾ÁË£¬Ôö¼ÓÁËºÜ¶àÌØĞÔ£¬±ÈÈçHDFS HA¡¢YARNµÈ¡£×îĞÂµÄhadoop
 				ssh-coyp-id itcast05
 				ssh-coyp-id itcast06
 				ssh-coyp-id itcast07
-				#ÅäÖÃitcast03µ½itcast04¡¢itcast05¡¢itcast06¡¢itcast07µÄÃâÃÜÂëµÇÂ½
-				#ÔÚitcast03ÉÏÉú²úÒ»¶ÔÔ¿³×
+				#é…ç½®itcast03åˆ°itcast04ã€itcast05ã€itcast06ã€itcast07çš„å…å¯†ç ç™»é™†
+				#åœ¨itcast03ä¸Šç”Ÿäº§ä¸€å¯¹é’¥åŒ™
 				ssh-keygen -t rsa
-				#½«¹«Ô¿¿½±´µ½ÆäËû½Úµã
+				#å°†å…¬é’¥æ‹·è´åˆ°å…¶ä»–èŠ‚ç‚¹
 				ssh-coyp-id itcast04
 				ssh-coyp-id itcast05
 				ssh-coyp-id itcast06
 				ssh-coyp-id itcast07
-				#×¢Òâ£ºÁ½¸önamenodeÖ®¼äÒªÅäÖÃsshÃâÃÜÂëµÇÂ½£¬±ğÍüÁËÅäÖÃitcast02µ½itcast01µÄÃâµÇÂ½
-				ÔÚitcast02ÉÏÉú²úÒ»¶ÔÔ¿³×
+				#æ³¨æ„ï¼šä¸¤ä¸ªnamenodeä¹‹é—´è¦é…ç½®sshå…å¯†ç ç™»é™†ï¼Œåˆ«å¿˜äº†é…ç½®itcast02åˆ°itcast01çš„å…ç™»é™†
+				åœ¨itcast02ä¸Šç”Ÿäº§ä¸€å¯¹é’¥åŒ™
 				ssh-keygen -t rsa
 				ssh-coyp-id -i itcast01				
 		
-		2.4½«ÅäÖÃºÃµÄhadoop¿½±´µ½ÆäËû½Úµã
+		2.4å°†é…ç½®å¥½çš„hadoopæ‹·è´åˆ°å…¶ä»–èŠ‚ç‚¹
 			scp -r /itcast/ itcast02:/
 			scp -r /itcast/ itcast03:/
 			scp -r /itcast/hadoop-2.4.1/ root@itcast04:/itcast/
 			scp -r /itcast/hadoop-2.4.1/ root@itcast05:/itcast/
 			scp -r /itcast/hadoop-2.4.1/ root@itcast06:/itcast/
 			scp -r /itcast/hadoop-2.4.1/ root@itcast07:/itcast/
-		###×¢Òâ£ºÑÏ¸ñ°´ÕÕÏÂÃæµÄ²½Öè
-		2.5Æô¶¯zookeeper¼¯Èº£¨·Ö±ğÔÚitcast05¡¢itcast06¡¢tcast07ÉÏÆô¶¯zk£©
+		###æ³¨æ„ï¼šä¸¥æ ¼æŒ‰ç…§ä¸‹é¢çš„æ­¥éª¤
+		2.5å¯åŠ¨zookeeperé›†ç¾¤ï¼ˆåˆ†åˆ«åœ¨itcast05ã€itcast06ã€tcast07ä¸Šå¯åŠ¨zkï¼‰
 			cd /itcast/zookeeper-3.4.5/bin/
 			./zkServer.sh start
-			#²é¿´×´Ì¬£ºÒ»¸öleader£¬Á½¸öfollower
+			#æŸ¥çœ‹çŠ¶æ€ï¼šä¸€ä¸ªleaderï¼Œä¸¤ä¸ªfollower
 			./zkServer.sh status
 			
-		2.6Æô¶¯journalnode£¨·Ö±ğÔÚÔÚitcast05¡¢itcast06¡¢tcast07ÉÏÖ´ĞĞ£©
+		2.6å¯åŠ¨journalnodeï¼ˆåˆ†åˆ«åœ¨åœ¨itcast05ã€itcast06ã€tcast07ä¸Šæ‰§è¡Œï¼‰
 			cd /itcast/hadoop-2.4.1
 			sbin/hadoop-daemon.sh start journalnode
-			#ÔËĞĞjpsÃüÁî¼ìÑé£¬itcast05¡¢itcast06¡¢itcast07ÉÏ¶àÁËJournalNode½ø³Ì
+			#è¿è¡Œjpså‘½ä»¤æ£€éªŒï¼Œitcast05ã€itcast06ã€itcast07ä¸Šå¤šäº†JournalNodeè¿›ç¨‹
 		
-		2.7¸ñÊ½»¯HDFS
-			#ÔÚitcast01ÉÏÖ´ĞĞÃüÁî:
+		2.7æ ¼å¼åŒ–HDFS
+			#åœ¨itcast01ä¸Šæ‰§è¡Œå‘½ä»¤:
 			hdfs namenode -format
-			#¸ñÊ½»¯ºó»áÔÚ¸ù¾İcore-site.xmlÖĞµÄhadoop.tmp.dirÅäÖÃÉú³É¸öÎÄ¼ş£¬ÕâÀïÎÒÅäÖÃµÄÊÇ/itcast/hadoop-2.4.1/tmp£¬È»ºó½«/itcast/hadoop-2.4.1/tmp¿½±´µ½itcast02µÄ/itcast/hadoop-2.4.1/ÏÂ¡£
+			#æ ¼å¼åŒ–åä¼šåœ¨æ ¹æ®core-site.xmlä¸­çš„hadoop.tmp.diré…ç½®ç”Ÿæˆä¸ªæ–‡ä»¶ï¼Œè¿™é‡Œæˆ‘é…ç½®çš„æ˜¯/itcast/hadoop-2.4.1/tmpï¼Œç„¶åå°†/itcast/hadoop-2.4.1/tmpæ‹·è´åˆ°itcast02çš„/itcast/hadoop-2.4.1/ä¸‹ã€‚
 			scp -r tmp/ itcast02:/itcast/hadoop-2.4.1/
 		
-		2.8¸ñÊ½»¯ZK(ÔÚitcast01ÉÏÖ´ĞĞ¼´¿É)
+		2.8æ ¼å¼åŒ–ZK(åœ¨itcast01ä¸Šæ‰§è¡Œå³å¯)
 			hdfs zkfc -formatZK
 		
-		2.9Æô¶¯HDFS(ÔÚitcast01ÉÏÖ´ĞĞ)
+		2.9å¯åŠ¨HDFS(åœ¨itcast01ä¸Šæ‰§è¡Œ)
 			sbin/start-dfs.sh
 
-		2.10Æô¶¯YARN(#####×¢Òâ#####£ºÊÇÔÚitcast03ÉÏÖ´ĞĞstart-yarn.sh£¬°ÑnamenodeºÍresourcemanager·Ö¿ªÊÇÒòÎªĞÔÄÜÎÊÌâ£¬ÒòÎªËûÃÇ¶¼ÒªÕ¼ÓÃ´óÁ¿×ÊÔ´£¬ËùÒÔ°ÑËûÃÇ·Ö¿ªÁË£¬ËûÃÇ·Ö¿ªÁË¾ÍÒª·Ö±ğÔÚ²»Í¬µÄ»úÆ÷ÉÏÆô¶¯)
+		2.10å¯åŠ¨YARN(#####æ³¨æ„#####ï¼šæ˜¯åœ¨itcast03ä¸Šæ‰§è¡Œstart-yarn.shï¼ŒæŠŠnamenodeå’Œresourcemanageråˆ†å¼€æ˜¯å› ä¸ºæ€§èƒ½é—®é¢˜ï¼Œå› ä¸ºä»–ä»¬éƒ½è¦å ç”¨å¤§é‡èµ„æºï¼Œæ‰€ä»¥æŠŠä»–ä»¬åˆ†å¼€äº†ï¼Œä»–ä»¬åˆ†å¼€äº†å°±è¦åˆ†åˆ«åœ¨ä¸åŒçš„æœºå™¨ä¸Šå¯åŠ¨)
 			sbin/start-yarn.sh
 
 		
-	µ½´Ë£¬hadoop-2.4.1ÅäÖÃÍê±Ï£¬¿ÉÒÔÍ³¼Æä¯ÀÀÆ÷·ÃÎÊ:
+	åˆ°æ­¤ï¼Œhadoop-2.4.1é…ç½®å®Œæ¯•ï¼Œå¯ä»¥ç»Ÿè®¡æµè§ˆå™¨è®¿é—®:
 		http://192.168.1.201:50070
 		NameNode 'itcast01:9000' (active)
 		http://192.168.1.202:50070
 		NameNode 'itcast02:9000' (standby)
 	
-	ÑéÖ¤HDFS HA
-		Ê×ÏÈÏòhdfsÉÏ´«Ò»¸öÎÄ¼ş
+	éªŒè¯HDFS HA
+		é¦–å…ˆå‘hdfsä¸Šä¼ ä¸€ä¸ªæ–‡ä»¶
 		hadoop fs -put /etc/profile /profile
 		hadoop fs -ls /
-		È»ºóÔÙkillµôactiveµÄNameNode
+		ç„¶åå†killæ‰activeçš„NameNode
 		kill -9 <pid of NN>
-		Í¨¹ıä¯ÀÀÆ÷·ÃÎÊ£ºhttp://192.168.1.202:50070
+		é€šè¿‡æµè§ˆå™¨è®¿é—®ï¼šhttp://192.168.1.202:50070
 		NameNode 'itcast02:9000' (active)
-		Õâ¸öÊ±ºòitcast02ÉÏµÄNameNode±ä³ÉÁËactive
-		ÔÚÖ´ĞĞÃüÁî£º
+		è¿™ä¸ªæ—¶å€™itcast02ä¸Šçš„NameNodeå˜æˆäº†active
+		åœ¨æ‰§è¡Œå‘½ä»¤ï¼š
 		hadoop fs -ls /
 		-rw-r--r--   3 root supergroup       1926 2014-02-06 15:36 /profile
-		¸Õ²ÅÉÏ´«µÄÎÄ¼şÒÀÈ»´æÔÚ£¡£¡£¡
-		ÊÖ¶¯Æô¶¯ÄÇ¸ö¹ÒµôµÄNameNode
+		åˆšæ‰ä¸Šä¼ çš„æ–‡ä»¶ä¾ç„¶å­˜åœ¨ï¼ï¼ï¼
+		æ‰‹åŠ¨å¯åŠ¨é‚£ä¸ªæŒ‚æ‰çš„NameNode
 		sbin/hadoop-daemon.sh start namenode
-		Í¨¹ıä¯ÀÀÆ÷·ÃÎÊ£ºhttp://192.168.1.201:50070
+		é€šè¿‡æµè§ˆå™¨è®¿é—®ï¼šhttp://192.168.1.201:50070
 		NameNode 'itcast01:9000' (standby)
 	
-	ÑéÖ¤YARN£º
-		ÔËĞĞÒ»ÏÂhadoopÌá¹©µÄdemoÖĞµÄWordCount³ÌĞò£º
+	éªŒè¯YARNï¼š
+		è¿è¡Œä¸€ä¸‹hadoopæä¾›çš„demoä¸­çš„WordCountç¨‹åºï¼š
 		hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.4.1.jar wordcount /profile /out
 	
-	OK£¬´ó¹¦¸æ³É£¡£¡£¡
+	OKï¼Œå¤§åŠŸå‘Šæˆï¼ï¼ï¼
 
-¡¾ºÚÂí³ÌĞòÔ±hadoop7ÌìÊÓÆµ½Ì³ÌÈ«ÍøÊ×·¢¡¿
-¸ü¶à½Ì³Ì¾¡ÔÚÒÔÏÂµêÆÌ£º
 
-µØÖ·1£ºhttp://chinajava.taobao.com
-µØÖ·2£ºhttp://shop111670867.taobao.com
-µØÖ·3£ºhttp://shop113561352.taobao.com
-µØÖ·4£ºhttp://shop113561276.taobao.com
-
-ÈçÁªÏµ²»ÉÏ£¬Çë¼ÓQQ£º1871209564
  
