@@ -1,0 +1,33 @@
+1.设置服务器A为时间服务器
+
+vi  /etc/ntp.conf
+#最后一行加入下面一行，保存退出
+
+server 127.127.1.0
+
+#重启时间服务器
+
+service ntpd restart
+
+2.B服务器同步A服务器的时间
+
+[root@bak-thinkee ~]# service ntpd stop
+Shutting down ntpd:                                        [  OK  ]
+#同步A服务器的时间
+[root@bak-thinkee ~]# ntpdate  <A服务器IP>
+24 Nov 17:19:01 ntpdate[17960]: step time server <A服务器IP> offset 25372.353604 sec
+#查看B机器系统时间
+[root@bak-thinkee ~]# date
+Thu Nov 24 17:19:06 CST 2016
+#查看B机器BIOS硬件时钟时间
+[root@bak-thinkee ~]# clock  --show
+Thu 24 Nov 2016 10:16:38 AM CST  -1.001796 seconds
+#用下面命令也可以查看B机器BIOS硬件时钟时间
+[root@bak-thinkee ~]# hwclock  --show 
+Thu 24 Nov 2016 10:16:47 AM CST  -1.001800 seconds
+#将系统时间刷入到BIOS时钟里面去
+[root@bak-thinkee ~]# hwclock --systohc
+#重新查看下硬件时钟时间
+[root@bak-thinkee ~]# hwclock  --show 
+Thu 24 Nov 2016 05:20:19 PM CST  -1.001660 seconds
+[root@bak-thinkee ~]# 
