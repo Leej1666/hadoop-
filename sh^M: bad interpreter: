@@ -1,0 +1,7 @@
+ 把windows下的tomcat7.0.27.zip上传到linux上之后，执行./startup.sh，这个错：
+
+    ./startup.sh: /bin/sh^M: bad interpreter: 没有那个文件或目录 解决办法
+
+    执行vim startup.sh,输入:set ff?，发现文件格式是dos，果断执行再输入:set ff=unix，然后保存一下。但是光该这个文件是不行的。还需要将另外两个sh文件的文件格式改一下，catalina.sh和setclasspath.sh。改完之后，重新启动startup.sh。搞定。
+
+    如果想避免这种错误，建议不要把windows下的zip包传到linux下，直接在tomcat官网上下Linux格式的包就over了。
